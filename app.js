@@ -52,8 +52,8 @@ const mapLocation = (lat, lng) => {
   var markerIcon = L.icon({
     iconUrl: 'images/icon-location.svg',
 
-    iconSize: [46, 56], // size of the icon
-    iconAnchor: [23, 55], // point of the icon which will correspond to marker's location
+    iconSize: [46, 56],
+    iconAnchor: [23, 55],
   })
   map.setView([lat, lng], 17)
 
@@ -64,7 +64,6 @@ const mapLocation = (lat, lng) => {
   L.marker([lat, lng], { icon: markerIcon }).addTo(map)
 }
 
-//Search by IP + validation
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault()
   if (
