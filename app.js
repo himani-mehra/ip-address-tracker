@@ -28,8 +28,12 @@ let isp
 let lat
 let lng
 
-let url = `https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}=`
-fetch(url)
+let ip_address;  
+let ip_url = 'https://api.ipify.org?format=json'
+fetch(ip_url).then((response) => response.json()).then(response => {
+  ip_address = response.ip;
+  let url = `https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}=${ip_address}`
+  fetch(url)
   .then((response) => response.json())
   .then((response) => {
     ipAddress = response.ip
@@ -63,6 +67,7 @@ const mapLocation = (lat, lng) => {
 
   L.marker([lat, lng], { icon: markerIcon }).addTo(map)
 }
+})
 
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault()
